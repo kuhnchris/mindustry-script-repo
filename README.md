@@ -82,3 +82,53 @@ end
 
 </p>
 </details>
+
+---
+## Item distributor
+
+**Required setup:**
+- a source
+- a target
+  
+**Script:**
+<details>
+<summary>Expand here</summary>
+<p>
+
+```
+sensor p reconstructor1 @progress
+jump 31 greaterThanEq p 0.01
+sensor sourceX vault1 @x
+sensor sourceY vault1 @y
+sensor targetX reconstructor1 @x
+sensor targetY reconstructor1 @y
+ubind @mega
+sensor ITEM @unit @firstItem
+sensor r reconstructor1 @silicon
+jump 16 greaterThanEq r 140
+ucontrol move sourceX sourceY 0 0 0
+ucontrol itemTake vault1 @silicon 10 0 0
+jump 15 lessThan ITEM 1
+ucontrol move targetX targetY 0 0 0
+ucontrol itemDrop reconstructor1 10 140 0 0
+end
+sensor r reconstructor1 @titanium
+jump 24 greaterThanEq r 100
+ucontrol move sourceX sourceY 0 0 0
+ucontrol itemTake vault1 @titanium 10 0 0
+jump 23 lessThan ITEM 1
+ucontrol move targetX targetY 0 0 0
+ucontrol itemDrop reconstructor1 10 140 0 0
+end
+sensor r reconstructor1 @metaglass
+jump 31 greaterThanEq r 100
+ucontrol move sourceX sourceY 0 0 0
+ucontrol itemTake vault1 @metaglass 10 0 0
+jump 31 lessThan ITEM 1
+ucontrol move targetX targetY 0 0 0
+ucontrol itemDrop reconstructor1 10 140 0 0
+end
+```
+
+</p>
+</details>
